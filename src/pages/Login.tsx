@@ -48,7 +48,7 @@ export default function Login({ item }: any) {
   };
 
   if (Auth.loggedIn) {
-    return <Redirect to="/calendar" />;
+    return <Redirect to="/identify" />;
   } else if (Auth.invalidToken) {
     return <LoginForm handleSubmit={handleSubmit} />;
   } else if (token) {
