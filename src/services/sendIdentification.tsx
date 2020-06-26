@@ -1,18 +1,21 @@
+export const toBase64 = (file: any, resolve?: any) => {
+  const reader = new FileReader();
+  reader.onload = (event) => {
+    const res = event.target!.result;
+    resolve(res);
+  };
+  reader.readAsDataURL(file);
+};
+
 export const sendIdentification = (
   file: any,
   dispatchPlant: any,
-  setLoading: any
+  setLoading?: any,
+  setHistory?: any
 ) => {
   new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      const res = event.target!.result;
-      console.log(res);
-      resolve(res);
-    };
-    reader.readAsDataURL(file);
+    toBase64(file, resolve);
   }).then((base64file) => {
-    console.log(base64file);
     const data = {
       api_key: "8AVKV6OtqzOqKhwKiKaMsyyi5JvgJ0jH0dBOtIkHTXv7ejkVvz",
       images: [`${base64file}`],
@@ -36,7 +39,6 @@ export const sendIdentification = (
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Success:", data);
         dispatchPlant({
           type: "GET_PLANT",
           payload: {
@@ -44,10 +46,11 @@ export const sendIdentification = (
           },
         });
         localStorage.setItem("current_plant", JSON.stringify(data));
+
         setLoading(false);
+        setHistory(data);
       })
       .catch((error) => {
-        console.log("from sendIdentification", error);
         throw new Error("Something went wrong!");
       });
   });

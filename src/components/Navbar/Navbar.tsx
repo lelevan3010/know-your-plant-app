@@ -112,7 +112,7 @@ export default function Navbar({ children }: any) {
             variant="permanent"
             open
           >
-            <Menu handleDrawerToggle={handleDrawerToggle} />
+            <Menu />
           </Drawer>
         </Hidden>
       </nav>

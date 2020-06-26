@@ -10,7 +10,7 @@ function SignOutButton() {
     <Button
       style={{ backgroundColor: "#5373ff", color: "white" }}
       onClick={() => {
-        localStorage.removeItem("token");
+        localStorage.clear();
         dispatchAuth({
           type: "LOGOUT",
           payload: { Auth: { loggedIn: false } },

@@ -4,8 +4,12 @@ import { Link } from "react-router-dom";
 const NotFound = () => {
   return (
     <React.Fragment>
-      <h1>Page not found!</h1>
-      <Link to="identify">Back to Home page</Link>
+      <h1>
+        Page not found!{" "}
+        <span>
+          <Link to="identify">Go back</Link>
+        </span>
+      </h1>
     </React.Fragment>
   );
 };

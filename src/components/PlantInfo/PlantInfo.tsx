@@ -36,7 +36,11 @@ function PlantInfo({
         <Typography variant="body2" color="textSecondary" component="p">
           {commonNames &&
             commonNames.map((el: any, index: any) => {
-              return el + ", ";
+              if (commonNames.length === index + 1) {
+                return el + ".";
+              } else {
+                return el + ", ";
+              }
             })}
         </Typography>
       </CardContent>
