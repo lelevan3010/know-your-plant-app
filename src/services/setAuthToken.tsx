@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const customAxios = axios.create({
-  baseURL: `${process.env.API_URL}`,
+  baseURL: `https://know-your-plant-api.herokuapp.com`,
 });
 
 export const setAuthToken = (token: any) => {

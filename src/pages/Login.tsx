@@ -34,7 +34,7 @@ export default function Login({ item }: any) {
 
   const handleSubmit = async (value: any) => {
     await axios
-      .post(`${process.env.API_URL}/user/login`, value)
+      .post(`https://know-your-plant-api.herokuapp.com/user/login`, value)
       .then((res) => {
         localStorage.setItem("token", res.data.token);
         dispatchAuth({

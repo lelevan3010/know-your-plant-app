@@ -30,7 +30,12 @@ function SignUpForm({ handleSubmit, errorSignUpMsg }: any) {
   return (
     <Paper
       elevation={3}
-      style={{ alignSelf: "center", maxHeight: 500, maxWidth: 300 }}
+      style={{
+        alignSelf: "center",
+        maxHeight: 500,
+        maxWidth: 300,
+        marginTop: "-100px",
+      }}
     >
       <h3 style={{ textAlign: "center" }}>Create new account</h3>
       <Formik
