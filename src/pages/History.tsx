@@ -30,7 +30,7 @@ const History = () => {
 
   const mappedHistory = History.map((el, index) => {
     return (
-      <Grid key={index} item xs={6} md={4} lg={3}>
+      <Grid key={index} item xs={12} sm={6} md={4} lg={3}>
         <HistoryCard imageURL={el.imageURL} date={el.date} />
       </Grid>
     );
