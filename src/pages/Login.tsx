@@ -12,6 +12,7 @@ export default function Login({ item }: any) {
   const { Auth, dispatchAuth } = useContext(AuthContext);
   const token = localStorage.getItem("token");
   const [errorLoginMsg, setErrorLoginMsg] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (!Auth.loggedIn) {
@@ -33,6 +34,7 @@ export default function Login({ item }: any) {
   }, [Auth.loggedIn, Auth.invalidToken, dispatchAuth, token]);
 
   const handleSubmit = async (value: any) => {
+    setLoading(true);
     await axios
       .post(`https://know-your-plant-api.herokuapp.com/user/login`, value)
       .then((res) => {
@@ -44,6 +46,7 @@ export default function Login({ item }: any) {
       })
       .catch((err) => {
         setErrorLoginMsg("User name or password invalid!");
+        setLoading(false);
       });
   };
 
@@ -51,7 +54,11 @@ export default function Login({ item }: any) {
     return <Redirect to="/identify" />;
   } else if (Auth.invalidToken) {
     return (
-      <LoginForm handleSubmit={handleSubmit} errorLoginMsg={errorLoginMsg} />
+      <LoginForm
+        handleSubmit={handleSubmit}
+        errorLoginMsg={errorLoginMsg}
+        loading={loading}
+      />
     );
   } else if (token) {
     return (

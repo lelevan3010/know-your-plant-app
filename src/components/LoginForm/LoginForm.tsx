@@ -6,6 +6,7 @@ import { TextField } from "formik-material-ui";
 import Button from "@material-ui/core/Button";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
+import { LinearProgress } from "@material-ui/core";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -24,7 +25,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-function LoginForm({ handleSubmit, errorLoginMsg }: any) {
+function LoginForm({ handleSubmit, errorLoginMsg, loading }: any) {
   const classes = useStyles();
 
   return (
@@ -37,6 +38,9 @@ function LoginForm({ handleSubmit, errorLoginMsg }: any) {
         marginTop: "-100px",
       }}
     >
+      {loading && (
+        <LinearProgress color="secondary" style={{ borderRadius: 6 }} />
+      )}
       <h3 style={{ textAlign: "center" }}>Login to your account</h3>
       <Formik
         initialValues={{ logUsername: "", logPassword: "" }}

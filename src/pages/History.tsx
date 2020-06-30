@@ -24,7 +24,6 @@ const History = () => {
         headers: { "Content-Type": "application/json" },
       })
       .then((res) => {
-        console.log(res.data);
         dispatchHistory({ type: "GET_HISTORY", payload: res.data });
       });
   }, [dispatchHistory]);

@@ -5,17 +5,14 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 
 const SignUpRedirect = () => {
   const [shouldRedirectToLogin, setShouldRedirectToLogin] = useState(false);
-  setInterval(() => {
-    setShouldRedirectToLogin(true);
-  }, 4000);
+  // setInterval(() => {
+  //   setShouldRedirectToLogin(true);
+  // }, 4000);
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       <div style={{ display: "flex" }}>
-        <h4 style={{ alignSelf: "center" }}>
-          Successfully sign up, redirect to login.{" "}
-        </h4>
-        <h4 style={{ alignSelf: "center" }}>
-          Taking so long?
+        <h4 style={{ alignSelf: "center", textAlign: "center" }}>
+          Successfully sign up, redirect to login. Taking so long?
           <span>
             <Link to="/"> click here</Link>
           </span>
