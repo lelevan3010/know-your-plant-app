@@ -68,6 +68,12 @@ export default function Login({ item }: any) {
       />
     );
   } else {
-    return <LoginForm handleSubmit={handleSubmit} />;
+    return (
+      <LoginForm
+        handleSubmit={handleSubmit}
+        errorLoginMsg={errorLoginMsg}
+        loading={loading}
+      />
+    );
   }
 }
