@@ -43,7 +43,7 @@ export default function Login({ item }: any) {
         });
       })
       .catch((err) => {
-        setErrorLoginMsg(err.response.data.message);
+        setErrorLoginMsg("User name or password invalid!");
       });
   };
 
