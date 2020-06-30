@@ -5,9 +5,9 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 
 const SignUpRedirect = () => {
   const [shouldRedirectToLogin, setShouldRedirectToLogin] = useState(false);
-  // setInterval(() => {
-  //   setShouldRedirectToLogin(true);
-  // }, 4000);
+  setInterval(() => {
+    setShouldRedirectToLogin(true);
+  }, 4000);
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       <div style={{ display: "flex" }}>
