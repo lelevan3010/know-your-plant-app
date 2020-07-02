@@ -27,6 +27,7 @@ export default function Login({ item }: any) {
             dispatchAuth({ type: "LOGIN", payload: res.data });
           })
           .catch((err) => {
+            localStorage.clear();
             dispatchAuth({ type: "LOGIN", payload: err.response.data });
           });
       }
