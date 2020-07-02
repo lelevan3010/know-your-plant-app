@@ -2,4 +2,4 @@
 [![React Version](https://img.shields.io/badge/React-16.13.1-61DAFB.svg?style=flat&logo=React)]()
 [![Typescript Version](https://img.shields.io/badge/TypeScript-3.7.2-007ACC.svg?style=flat&logo=TypeScript)]()<br/>
 [![Heroku](https://heroku-badge.herokuapp.com/?app=heroku-badge)](https://knowyourplant.herokuapp.com)
-[Staging Live Preview](https://eezery-cx-develop.netlify.com/)<br/>
+[Staging Live Preview](https://knowyourplant.herokuapp.com)<br/>
