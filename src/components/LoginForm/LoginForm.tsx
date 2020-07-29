@@ -8,12 +8,15 @@ import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import { LinearProgress } from "@material-ui/core";
 
+import OAuthLoginButton from "../OAuthLoginButton/OAuthLoginButton";
+
+import GoogleIcon from "../../assets/google.png";
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     loginForm: {
       display: "flex",
       flexDirection: "column",
-      padding: 30,
     },
     loginInput: {
       marginBottom: 20,
@@ -21,27 +24,60 @@ const useStyles = makeStyles((theme: Theme) =>
     loginButton: {
       backgroundColor: "#5373FF",
       color: "white",
+      textTransform: "none",
+      fontWeight: "bold",
+      fontSize: 14,
     },
   })
 );
 
 function LoginForm({ handleSubmit, errorLoginMsg, loading }: any) {
   const classes = useStyles();
+  let redirectURI;
+  if (process.env.NODE_ENV === "production") {
+    redirectURI = "https://knowyourplant.herokuapp.com";
+  } else {
+    redirectURI = "http://localhost:3001";
+  }
+  const googleLink = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${process.env.REACT_APP_GOOGLE_CLIENT_ID}&response_type=code&scope=https://www.googleapis.com/auth/userinfo.profile&redirect_uri=${redirectURI}`;
 
   return (
     <Paper
       elevation={3}
       style={{
+        display: "flex",
+        flexDirection: "column",
         alignSelf: "center",
-        maxHeight: 400,
         maxWidth: 300,
         marginTop: "-100px",
+        padding: "0 30px",
+        transform: "translateY(50px)",
       }}
     >
       {loading && (
         <LinearProgress color="secondary" style={{ borderRadius: 6 }} />
       )}
-      <h3 style={{ textAlign: "center" }}>Login to your account</h3>
+      <h3 style={{ textAlign: "center" }}>Log in to your account</h3>
+      <OAuthLoginButton
+        name="Google"
+        link={googleLink}
+        icon={GoogleIcon}
+        background="#4286F4"
+      />
+      <div style={{ borderTop: "1px solid darkgray", margin: "25px 0px" }}>
+        <span
+          style={{
+            backgroundColor: "white",
+            transform: "translateY(-15px)",
+            position: "absolute",
+            left: "50%",
+            marginLeft: "-17px",
+            padding: "0 5px",
+          }}
+        >
+          or
+        </span>
+      </div>
       <Formik
         initialValues={{ logUsername: "", logPassword: "" }}
         onSubmit={handleSubmit}

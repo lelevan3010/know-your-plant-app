@@ -1,7 +1,16 @@
 import axios from "axios";
 
+let API_URL;
+switch (process.env.NODE_ENV) {
+  case "production":
+    API_URL = "https://know-your-plant-api.herokuapp.com";
+    break;
+  default:
+    API_URL = "http://localhost:3000/";
+}
+
 export const customAxios = axios.create({
-  baseURL: `https://know-your-plant-api.herokuapp.com`,
+  baseURL: API_URL,
 });
 
 export const setAuthToken = (token: any) => {
