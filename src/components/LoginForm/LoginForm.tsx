@@ -55,7 +55,10 @@ function LoginForm({ handleSubmit, errorLoginMsg, loading }: any) {
       }}
     >
       {loading && (
-        <LinearProgress color="secondary" style={{ borderRadius: 6 }} />
+        <LinearProgress
+          color="secondary"
+          style={{ borderRadius: 6, margin: "0 -30px" }}
+        />
       )}
       <h3 style={{ textAlign: "center" }}>Log in to your account</h3>
       <OAuthLoginButton
@@ -112,7 +115,7 @@ function LoginForm({ handleSubmit, errorLoginMsg, loading }: any) {
           </Form>
         )}
       </Formik>
-      <p style={{ color: "red", textAlign: "center", marginTop: "-10px" }}>
+      <p style={{ color: "red", textAlign: "center", marginBottom: 0 }}>
         {errorLoginMsg}
       </p>
       <h4 style={{ textAlign: "center" }}>
