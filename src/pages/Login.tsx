@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import axios from "axios";
 import { Redirect } from "react-router-dom";
 
 import LoginForm from "../components/LoginForm/LoginForm";
@@ -36,8 +35,8 @@ export default function Login({ item }: any) {
 
   const handleSubmit = async (value: any) => {
     setLoading(true);
-    await axios
-      .post(`https://know-your-plant-api.herokuapp.com/user/login`, value)
+    await customAxios
+      .post(`/user/login`, value)
       .then((res) => {
         localStorage.setItem("token", res.data.token);
         dispatchAuth({
