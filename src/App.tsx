@@ -5,12 +5,13 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { ThemeProvider } from "@material-ui/styles";
 import { theme } from "./Theme";
 
-import Login from "./pages/Login";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import { AuthProvider } from "./context/auth/AuthContext";
 import { PlantProvider } from "./context/plant/PlantContext";
 import { HistoryProvider } from "./context/history/HistoryContext";
 
+import Login from "./pages/Login";
+import MFAuth from "./pages/MFAuth";
 import Identify from "./pages/Identify";
 import History from "./pages/History";
 import SignUp from "./pages/SignUp";
@@ -27,6 +28,7 @@ function App() {
             <BrowserRouter>
               <Switch>
                 <Route exact path="/" component={Login} />
+                <Route path="/mfauth" component={MFAuth} />
                 <Route path="/signup" component={SignUp} />
                 <Route path="/signup-redirect" component={SignUpRedirect} />
                 <PrivateRoute path="/identify" component={Identify} />

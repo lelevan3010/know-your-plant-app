@@ -5,13 +5,14 @@ import LoginForm from "../components/LoginForm/LoginForm";
 import { AuthContext } from "../context/auth/AuthContext";
 import { setAuthToken, customAxios } from "../services/setAuthToken";
 
-import CircularProgress from "@material-ui/core/CircularProgress";
+// import CircularProgress from "@material-ui/core/CircularProgress";
 
 export default function Login({ item }: any) {
   const { Auth, dispatchAuth } = useContext(AuthContext);
   const token = localStorage.getItem("token");
   const [errorLoginMsg, setErrorLoginMsg] = useState("");
   const [loading, setLoading] = useState(false);
+  const [ userId, setUserId ] = useState(null);
 
   useEffect(() => {
     if (!Auth.loggedIn) {
@@ -38,11 +39,8 @@ export default function Login({ item }: any) {
     await customAxios
       .post(`/user/login`, value)
       .then((res) => {
-        localStorage.setItem("token", res.data.token);
-        dispatchAuth({
-          type: "LOGIN",
-          payload: { Auth: { loggedIn: true } },
-        });
+        localStorage.setItem("userId", res.data.user._id);
+        setUserId(res.data.user._id);
       })
       .catch((err) => {
         setErrorLoginMsg("User name or password invalid!");
@@ -50,23 +48,8 @@ export default function Login({ item }: any) {
       });
   };
 
-  if (Auth.loggedIn) {
-    return <Redirect to="/identify" />;
-  } else if (Auth.invalidToken) {
-    return (
-      <LoginForm
-        handleSubmit={handleSubmit}
-        errorLoginMsg={errorLoginMsg}
-        loading={loading}
-      />
-    );
-  } else if (token) {
-    return (
-      <CircularProgress
-        size={100}
-        style={{ color: "#5373FF", alignSelf: "center" }}
-      />
-    );
+  if (userId) {
+    return <Redirect to="/mfauth" />;
   } else {
     return (
       <LoginForm
