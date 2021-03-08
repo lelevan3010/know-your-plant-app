@@ -53,6 +53,7 @@ export default function MFAuth({ item }: any) {
             <img style={{
                 height: 200,
                 position: "absolute",
+                marginTop: 80
               }} alt="qr-code" src={qrcodeURL}
             />
             <MfaForm
